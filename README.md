@@ -1,13 +1,13 @@
-# API-note
+# API-Give-n-Take
 
-#### This is an HTTP API made with Restify for managing personal notes.
+#### This is an HTTP API made with Restify for managing the application Give-n-Take.
 
 ## Get started
 
 #### Clone project
 
-`$ git clone git@github.com:nguyen.1909/API-note.git`<br/>
-`$ cd API-note`
+`$ git clone https://github.com/Give-n-Take/API-Give-n-Take`<br/>
+`$ cd API-Give-n-Take`
 
 #### Install the dependencies
 
