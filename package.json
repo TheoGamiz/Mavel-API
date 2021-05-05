@@ -1,0 +1,43 @@
+{
+  "name": "api-note",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --timeout 30000",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": true,
+    "trailingComma": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nguyen1909/API-note.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nguyen1909/API-note/issues"
+  },
+  "homepage": "https://github.com/nguyen1909/API-note#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^8.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.6",
+    "node-fetch": "^2.6.1",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1"
+  }
+}
