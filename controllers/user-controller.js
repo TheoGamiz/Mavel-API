@@ -23,6 +23,8 @@ UserController.signup = async (username, password, callback) => {
     }
   });
 
+  
+
   const users = await Users.getAll();
   for (const user of users) {
     if (user.username === username) {

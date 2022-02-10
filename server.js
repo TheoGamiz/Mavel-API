@@ -3,6 +3,10 @@ const restify = require('restify');
 const database = require('./database');
 const UserController = require('./controllers/user-controller');
 const NotesController = require('./controllers/notes-controller');
+const HeroController = require('./controllers/hero-controller');
+const Users = require('./models/users');
+
+
 
 require('dotenv').config();
 
@@ -55,32 +59,69 @@ const app = restify.createServer();
     );
   });
 
-  // Get notes
-  app.get('/notes', (req, res) => {
-    const token = req.header('x-access-token');
+  //add Hero
+  app.post('/addhero', (req, res) => {
+    const { name, description } = req.body;
 
-    NotesController.getNotes(token, (statusCode, errorMessage, notes) => {
+    HeroController.addhero(name, description, (statusCode, errorMessage) => {
       if (statusCode !== 200) {
         return res.send(statusCode, {
           error: errorMessage
         });
       }
       return res.send(200, {
-        error: null,
-        notes: notes
+        error: null
       });
     });
   });
 
-  // Add note
-  app.put('/notes', (req, res) => {
-    const token = req.header('x-access-token');
-    const noteContent = req.body.content || '';
+  //get Heros
+  app.get('/getheros', (req, res) => {
+    
 
-    NotesController.addNote(
-      token,
-      noteContent,
-      (statusCode, errorMessage, note) => {
+    HeroController.getheros((heros) => {
+      
+      return res.send(200, {
+        error: null,
+        heros: heros
+      });
+    });
+  });
+
+
+
+  //delete hero 
+  app.del('/heros/:id', (req, res) => {
+    
+    const heroID = req.params.id;
+    
+    HeroController.deleteHero(heroID, (statusCode, errorMessage) => {
+      if (statusCode !== 200) {
+        return res.send(statusCode, {
+          error: errorMessage
+        });
+      }
+      return res.send(200, {
+        error: null
+       
+      });
+    });
+  });
+
+
+
+  // Patch hero
+  app.patch('/hero/:id', (req, res) => {
+    
+    const heroID = req.params.id;
+    const description = req.body.description;
+    
+
+    HeroController.modifyHero(
+      heroID,
+      description,
+      
+      (statusCode, errorMessage, hero) => {
         if (statusCode !== 200) {
           return res.send(statusCode, {
             error: errorMessage
@@ -88,7 +129,7 @@ const app = restify.createServer();
         }
         return res.send(200, {
           error: null,
-          note: note
+          note: hero
         });
       }
     );
@@ -118,6 +159,50 @@ const app = restify.createServer();
     );
   });
 
+// Get notes
+app.get('/notes', (req, res) => {
+  const token = req.header('x-access-token');
+
+  NotesController.getNotes(token, (statusCode, errorMessage, notes) => {
+    if (statusCode !== 200) {
+      return res.send(statusCode, {
+        error: errorMessage
+      });
+    }
+    return res.send(200, {
+      error: null,
+      notes: notes
+    });
+  });
+});
+
+
+
+   // Add note
+   app.put('/notes', (req, res) => {
+    const token = req.header('x-access-token');
+    const noteContent = req.body.content || '';
+
+    NotesController.addNote(
+      token,
+      noteContent,
+      (statusCode, errorMessage, note) => {
+        if (statusCode !== 200) {
+          return res.send(statusCode, {
+            error: errorMessage
+          });
+        }
+        return res.send(200, {
+          error: null,
+          note: note
+        });
+      }
+    );
+  });
+
+
+
+  
   // Delete note
   app.del('/notes/:id', (req, res) => {
     const token = req.header('x-access-token');
