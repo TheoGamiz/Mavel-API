@@ -2,9 +2,9 @@ const restify = require('restify');
 
 const database = require('./database');
 const UserController = require('./controllers/user-controller');
-const NotesController = require('./controllers/notes-controller');
 const HeroController = require('./controllers/hero-controller');
 const Users = require('./models/users');
+const DeviceController = require('./controllers/device-controller');
 
 
 
@@ -84,6 +84,20 @@ const app = restify.createServer();
       return res.send(200, {
         error: null,
         heros: heros
+      });
+    });
+  });
+
+
+  //get s8_tigers
+  app.get('/s8tiger', (req, res) => {
+    
+
+    DeviceController.gets8tigers((s8tiger) => {
+      
+      return res.send(200, {
+        error: null,
+        s8tiger: s8tiger
       });
     });
   });

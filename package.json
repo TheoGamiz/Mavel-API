@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nguyen1909/API-note.git"
+    "url": "git+https://github.com/TheoGamiz/Mavel-API"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nguyen1909/API-note/issues"
+    "url": "https://github.com/TheoGamiz/Mavel-API/issues"
   },
-  "homepage": "https://github.com/nguyen1909/API-note#readme",
+  "homepage": "https://github.com/TheoGamiz/Mavel-API#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",

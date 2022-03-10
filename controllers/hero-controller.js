@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
 const ObjectID = require('mongodb').ObjectID;
 require('dotenv').config();
 
